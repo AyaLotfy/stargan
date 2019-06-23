@@ -27,9 +27,8 @@ def main(config):
     rafd_loader = None
 
     if config.dataset in ['CelebA', 'Both']:
-        #celeba_loader = get_loader('/content/StarGANLib/data/CelebA_nocrop/images', '/content/StarGANLib/data/list_attr_celeba.txt', config.selected_attrs,
         
-        celeba_loader = get_loader('/gdrive/My Drive/try', '/content/StarGANLib/data/list_attr_celeba.txt', config.selected_attrs,
+        celeba_loader = get_loader('/content/StarGANLib/data/CelebA_nocrop/images', '/content/StarGANLib/data/list_attr_celeba.txt', config.selected_attrs,
                                    config.celeba_crop_size, config.image_size, config.batch_size,
                                    'CelebA', config.mode, config.num_workers)
     if config.dataset in ['RaFD', 'Both']:
