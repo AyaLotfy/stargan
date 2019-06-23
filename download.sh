@@ -3,12 +3,26 @@ FILE=$1
 if [ $FILE == "celeba" ]; then
 
     # CelebA images and attribute labels
-    URL=https://www.dropbox.com/s/d1kjpkqklf0uw77/celeba.zip?dl=0
+    ''' URL=https://www.dropbox.com/s/d1kjpkqklf0uw77/celeba.zip?dl=0
     ZIP_FILE=./data/celeba.zip
     mkdir -p ./data/
     wget -N $URL -O $ZIP_FILE
     unzip $ZIP_FILE -d ./data/
+    rm $ZIP_FILE'''
+    
+    __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+    # CelebA images
+    URL=https://drive.google.com/file/d/1SSnOlN3Usp9nLYKRyUtRYfYMhiovPOOb/view?usp=sharing
+    ZIP_FILE=./data/celeba.zip
+    mkdir -p ./data/
+    ${__dir}/gd.sh $URL $ZIP_FILE
+    unzip -q -o $ZIP_FILE -d ./data/ | awk 'BEGIN {ORS=" "} {if(NR%10==0)print "."}'
     rm $ZIP_FILE
+
+    
+    
+    
 
 
 elif [ $FILE == 'pretrained-celeba-128x128' ]; then
