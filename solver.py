@@ -533,6 +533,8 @@ class Solver(object):
         
         with torch.no_grad():
             for i, (x_real, c_org) in enumerate(data_loader):
+                print ('aya')
+                print('i,x_real, c_org',i,x_real, c_org)
 
                 # Prepare input images and target domain labels.
                 x_real = x_real.to(self.device)
